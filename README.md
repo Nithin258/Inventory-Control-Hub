@@ -88,9 +88,47 @@ VITE_API_URL=http://localhost:4000
 VITE_SOCKET_URL=http://localhost:4000
 ```
 
-## Deploying
-- Backend: Render/Railway/Fly.io (needs Postgres + Redis add-ons)
-- Frontend: Vercel/Netlify (set `VITE_API_URL` to deployed backend URL)
+## Deploying Frontend to Vercel
+
+### Option A: Via GitHub Integration (Recommended)
+1. Log in to the [Vercel Dashboard](https://vercel.com).
+2. Select **Add New** -> **Project** and import your repository: `Nithin258/Inventory-Control-Hub`.
+3. Under **Configure Project**, edit the **Root Directory** setting and select `frontend`.
+4. Click **Deploy**. Vercel will build and host your React Vite application.
+
+### Option B: Via Vercel CLI (Command Line)
+Run the following commands in your terminal to deploy directly:
+```bash
+# 1. Install Vercel CLI globally
+npm install -g vercel
+
+# 2. Change directory into the frontend folder
+cd frontend
+
+# 3. Log in to Vercel
+vercel login
+
+# 4. Trigger setup & development build (set Root Directory as `./` since you are already inside `frontend/`)
+vercel
+
+# 5. Trigger final production build and deploy live
+vercel --prod
+```
+
+## Local Build & Preview Commands
+
+To build and preview the application production bundle locally:
+
+```bash
+# 1. Navigate to frontend folder
+cd frontend
+
+# 2. Build the production assets (Typescript compile + Vite minification)
+npm run build
+
+# 3. Start a local preview server hosting the compiled bundle
+npm run preview
+```
 
 ## License
 MIT
